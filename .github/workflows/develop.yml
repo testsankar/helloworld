@@ -40,7 +40,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: build 
         run:  mvn -B package --file rest/pom.xml
-      - run: mkdir staging && cp target/*.jar staging
+      - run: mkdir staging && cp rest/target/*.jar staging
       - uses: actions/upload-artifact@v3
         with:
           name: Package
