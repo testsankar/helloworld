@@ -39,7 +39,5 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: build 
-        run:  mvn --batch-mode --update-snapshots package
-      - name: Run the Maven verify phase
-        run: mvn --batch-mode --update-snapshots verify
+        run:  mvn -B package --file rest/pom.xml
 
