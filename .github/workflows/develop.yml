@@ -50,7 +50,7 @@ jobs:
         uses: nnichols/maven-version-bump-action@v3
         with:
           github-token: ${{ secrets.github_token }}
-          pom-path: rest/pom.xml
+          pom-path: rest
 
       - name: Print Version
         run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
