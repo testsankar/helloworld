@@ -45,12 +45,11 @@ jobs:
         with:
           name: Package
           path: staging
-      - name: Bump Version
-        id: bump
-        uses: nnichols/maven-version-bump-action@v3
-        with:
-          github-token: ${{ secrets.github_token }}
-          pom-path: rest
-
-      - name: Print Version
-        run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
+      - name: Set Git user
+        run: |
+          git config user.email "sankar016@outlook.com"
+          git config user.name "GitHub Actions"
+      - name: Publish JAR
+        run: mvn -B release:prepare release:perform -DskipTests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
